@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Bar, Line, Doughnut } from "react-chartjs-2";
+import { Line, Doughnut } from "react-chartjs-2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {
@@ -14,7 +14,6 @@ import {
   Tooltip,
   Legend,
   ArcElement,
-  BarElement,
 } from "chart.js";
 
 ChartJS.register(
@@ -25,17 +24,15 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement,
-  BarElement
+  ArcElement
 );
 
 interface Sadhana {
   _id: string;
   date: string;
   wakeUpTime: string;
-  chantingRounds: number;
-  hearingDuration: number;
   readingDuration: number;
+  hearingDuration: number;
   morningProgramme: boolean;
   preachingDuration: number;
 }
@@ -75,12 +72,6 @@ export default function Dashboard() {
 
   const dates = filteredData.map((entry) => entry.date);
   const wakingTimes = filteredData.map((entry) => entry.wakeUpTime);
-  const chantingRounds = filteredData.map((entry) => entry.chantingRounds);
-  const hearingDurations = filteredData.map((entry) => entry.hearingDuration);
-  const readingDurations = filteredData.map((entry) => entry.readingDuration);
-  const preachingDurations = filteredData.map(
-    (entry) => entry.preachingDuration
-  );
   const morningProgrammeAttendance = filteredData.filter(
     (entry) => entry.morningProgramme
   ).length;
